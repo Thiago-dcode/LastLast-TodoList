@@ -86,18 +86,21 @@ function App() {
       if (!isNaN(daysLeft)) setDaysleft(daysLeft);
     }
     if (currentDate !== GetDate("min")) {
-      setCurrentDate(GetDate("min"));
+      const actuallyDate =  Math.ceil(
+        (new Date(GetDate("min")).getTime() - new Date(currentDate).getTime()))
+        console.log(actuallyDate);
       const todoDayUpdate = todo.map((td) => {
         return {
           ...td,
-          daysLeft: td.daysLeft - 1,
+          daysLeft: td.daysLeft - actuallyDate,
         };
       });
       const todoDayUpdateFiltered = todoDayUpdate.filter(
         (td) => td.daysLeft >= 0 && td.lastDay
       );
-      console.log(todoDayUpdateFiltered);
+      
       setTodo(todoDayUpdateFiltered)
+      setCurrentDate(GetDate('min'))
     }
   });
 
