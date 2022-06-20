@@ -21,7 +21,7 @@ function App() {
   };
   const handleInput = () => {
     if (input !== "") {
-      console.log(dateInput);
+      
       setId(id + 1);
       const newTodo = {
         id: id,
@@ -82,13 +82,17 @@ function App() {
           60 /
           24
       );
-      console.log(daysLeft);
+     
       if (!isNaN(daysLeft)) setDaysleft(daysLeft);
     }
     if (currentDate !== GetDate("min")) {
       const actuallyDate =  Math.ceil(
-        (new Date(GetDate("min")).getTime() - new Date(currentDate).getTime()))
-        console.log(actuallyDate);
+        (new Date(GetDate("min")).getTime() - new Date(currentDate).getTime())/
+        1000 /
+        60 /
+        60 /
+        24)
+        console.log(actuallyDate)
       const todoDayUpdate = todo.map((td) => {
         return {
           ...td,
